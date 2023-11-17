@@ -1,4 +1,16 @@
 <h1>新しい投稿</h1>
+
+<div class="form-container">
+  <% if @post.errors.any? %>
+    <%= @post.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+
 <%= form_with model: @post, html: {class: "form-container"} do |f| %>
   <div class="form-input">
     <%= f.label :title %>
